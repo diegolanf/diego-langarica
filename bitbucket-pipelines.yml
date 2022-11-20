@@ -1,0 +1,108 @@
+image: cypress/browsers:node16.17.0-chrome106
+pipelines:
+  branches:
+    main:
+      - parallel:
+          - step:
+              name: Install Angular
+              caches:
+                - node
+                - cypress
+              script:
+                - npm ci
+          - step:
+              name: Install API
+              caches:
+                - api-node
+              script:
+                - npm run install:functions
+      - parallel:
+          - step:
+              name: API unit tests
+              caches:
+                - api-node
+              script:
+                - npm run test:functions
+          - step:
+              name: API e2e tests
+              caches:
+                - api-node
+              script:
+                - npm run e2e:functions
+          - step:
+              name: Angular unit tests
+              caches:
+                - node
+              script:
+                - npm run test:ci
+          - step:
+              name: Angular e2e tests
+              caches:
+                - node
+                - cypress
+              script:
+                - npm run e2e:ci
+              artifacts:
+                - cypress/screenshots/**
+                - cypress/videos/**
+      - step:
+          name: Deploy on firebase
+          caches:
+            - node
+            - api-node
+          deployment: production
+          script:
+            - npm run build:prod
+            - pipe: atlassian/firebase-deploy:2.0.0
+              variables:
+                KEY_FILE: $KEY_FILE
+                PROJECT_ID: "diego-langarica"
+  pull-requests:
+    release/*:
+      - parallel:
+          - step:
+              name: Install Angular
+              caches:
+                - node
+                - cypress
+              script:
+                - npm ci
+          - step:
+              name: Install API
+              caches:
+                - api-node
+              script:
+                - npm run install:functions
+      - parallel:
+          - step:
+              name: API unit tests
+              caches:
+                - api-node
+              script:
+                - npm run test:functions
+          - step:
+              name: API e2e tests
+              caches:
+                - api-node
+              script:
+                - npm run e2e:functions
+          - step:
+              name: Angular unit tests
+              caches:
+                - node
+              script:
+                - npm run test:ci
+          - step:
+              name: Angular e2e tests
+              caches:
+                - node
+                - cypress
+              script:
+                - npm run e2e:ci
+              artifacts:
+                - cypress/screenshots/**
+                - cypress/videos/**
+definitions:
+  caches:
+    api-node: api/node_modules
+    cypress: $HOME/.cache/Cypress

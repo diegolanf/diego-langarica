@@ -1,0 +1,6 @@
+{
+  "*.ts": ["prettier", "eslint --fix"],
+  "*.html": ["prettier"],
+  "*.scss": ["prettier"],
+  "*.json": ["prettier"]
+}

@@ -49,16 +49,20 @@
   },
   "generators": {
     "@nx/angular:application": {
-      "style": "scss",
+      "addTailwind": true,
+      "e2eTestRunner": "cypress",
       "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "style": "scss",
+      "unitTestRunner": "jest"
     },
     "@nx/angular:library": {
+      "changeDetection": "OnPush",
       "linter": "eslint",
+      "style": "scss",
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
+      "changeDetection": "OnPush",
       "style": "scss"
     }
   }

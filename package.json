@@ -4,6 +4,9 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
+    "ci:test": "nx run-many --target=test",
+    "ci:e2e:client": "nx e2e client-e2e",
+    "ci:build": "nx run-many --target=build -c production",
     "clear-nx-cache": "rm -rf ./node_modules/.cache/nx"
   },
   "private": true,

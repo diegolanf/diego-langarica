@@ -7,20 +7,28 @@
     "build": {
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "defaultConfiguration": "development",
       "options": {
         "target": "node",
         "compiler": "tsc",
         "outputPath": "dist/apps/api",
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
-        "assets": ["apps/api/src/assets"],
+        "assets": ["apps/api/src/assets", "apps/api/src/package.json"],
         "isolatedConfig": true,
         "webpackConfig": "apps/api/webpack.config.js"
       },
       "configurations": {
         "development": {},
-        "production": {}
+        "function": {
+          "main": "apps/api/src/function.ts"
+        },
+        "production": {
+          "main": "apps/api/src/function.ts",
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
       }
     },
     "serve": {
@@ -33,9 +41,19 @@
         "development": {
           "buildTarget": "api:build:development"
         },
-        "production": {
-          "buildTarget": "api:build:production"
+        "function": {
+          "buildTarget": "api:build:function"
         }
+      }
+    },
+    "serve-as-function": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx serve api -c function",
+          "firebase emulators:start --only functions"
+        ],
+        "parallel": true
       }
     },
     "lint": {

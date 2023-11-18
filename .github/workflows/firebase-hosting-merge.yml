@@ -8,12 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: diegolanf/cache-npm@v2
-      - name: Cache cypress
-        id: cache-cypress
-        uses: actions/cache@v3
-        with:
-          path: /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-cypress
   tests:
     runs-on: ubuntu-latest
     needs: [ install ]
@@ -28,28 +22,32 @@ jobs:
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v2
-      - name: Restore cached Cypress
-        id: cache-cypress-restore
-        uses: actions/cache/restore@v3
+      - uses: cypress-io/github-action@v6
         with:
-          path: /home/runner/.cache/Cypress
-          key: ${{ runner.os }}-cypress
-      - uses: actions/setup-node@v4
+          project: apps/client-e2e
+          start: npm run ci:serve:client
+          wait-on: 'http://localhost:4200'
+          config: baseUrl=http://localhost:4200
+  e2e-api:
+    runs-on: ubuntu-latest
+    needs: [ install ]
+    steps:
+      - uses: diegolanf/cache-npm@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm run ci:e2e:client
+      - run: npm run ci:e2e:api
   build-and-deploy:
     runs-on: ubuntu-latest
-    needs: [ tests, e2e-client ]
+    needs: [ tests, e2e-client, e2e-api ]
     steps:
       - uses: diegolanf/cache-npm@v2
       - uses: actions/setup-node@v4
         with:
           node-version: 16
       - run: npm run ci:build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: w9jds/firebase-action@master
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIEGO_LANGARICA }}'
-          channelId: live
-          projectId: diego-langarica
+          args: deploy
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}

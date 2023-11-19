@@ -9,7 +9,17 @@
     "lib": ["es2020", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
-    "paths": {},
+    "paths": {
+      "@diego-langarica/shared/infra/routing": [
+        "libs/shared/infra/routing/src/index.ts"
+      ],
+      "@diego-langarica/shared/ui/services": [
+        "libs/shared/ui/services/src/index.ts"
+      ],
+      "@diego-langarica/shared/utility/functions": [
+        "libs/shared/utility/functions/src/index.ts"
+      ]
+    },
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,

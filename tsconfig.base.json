@@ -10,14 +10,23 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
+      "@diego-langarica/shared/infra/i18n": [
+        "libs/shared/infra/i18n/src/index.ts"
+      ],
       "@diego-langarica/shared/infra/routing": [
         "libs/shared/infra/routing/src/index.ts"
+      ],
+      "@diego-langarica/shared/infra/translation": [
+        "libs/shared/infra/translation/src/index.ts"
       ],
       "@diego-langarica/shared/ui/services": [
         "libs/shared/ui/services/src/index.ts"
       ],
       "@diego-langarica/shared/utility/functions": [
         "libs/shared/utility/functions/src/index.ts"
+      ],
+      "@diego-langarica/shell/navigation": [
+        "libs/shell/navigation/src/index.ts"
       ]
     },
     "rootDir": ".",

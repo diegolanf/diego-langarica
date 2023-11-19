@@ -31,6 +31,7 @@
     "@nestjs/swagger": "^7.1.16",
     "@nestjs/throttler": "^5.0.1",
     "@nestjs/typeorm": "^10.0.1",
+    "@ngneat/transloco": "^6.0.0",
     "@nx/angular": "17.1.2",
     "@rx-angular/cdk": "^17.0.0",
     "@rx-angular/state": "^17.0.0",

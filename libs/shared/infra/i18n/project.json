@@ -1,0 +1,27 @@
+{
+  "name": "shared-infra-i18n",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/infra/i18n/src",
+  "prefix": "diego-langarica",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/infra/i18n/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/infra/i18n/**/*.ts",
+          "libs/shared/infra/i18n/**/*.html"
+        ]
+      }
+    }
+  }
+}

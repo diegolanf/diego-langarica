@@ -1,28 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 import packageInfo from 'package.json';
 
-import { RouteConfig } from '../route-config.model';
+import { RouteConfig } from '../../route-config.model';
 
 @Component({
-  selector: 'diego-langarica-side-navigation',
+  selector: 'diego-langarica-navigation-menu',
   standalone: true,
   imports: [
     CommonModule,
+    MatButtonModule,
     MatIconModule,
-    MatListModule,
+    MatMenuModule,
     RouterModule,
     TranslocoModule,
   ],
-  templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.scss'],
+  templateUrl: './navigation-menu.component.html',
+  styleUrls: ['./navigation-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideNavigationComponent {
+export class NavigationMenuComponent {
   @Input({ required: true }) routeItems!: RouteConfig[];
 
   readonly version: string = packageInfo.version;

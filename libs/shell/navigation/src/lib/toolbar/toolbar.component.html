@@ -1,0 +1,10 @@
+<mat-toolbar>
+  @if (mdDown()) {
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  } @else {
+    <diego-langarica-navigation-menu [routeItems]="routeItems" />
+  }
+  <span class="pl-4 font-thin">tochtli</span>
+</mat-toolbar>

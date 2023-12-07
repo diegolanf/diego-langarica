@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<diego-langarica-toolbar
+  [routeItems]="navigationMenuItems"
+  [sidenav]="sidenav" />
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="flex-col">
+    <diego-langarica-side-navigation [routeItems]="navigationMenuItems" />
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

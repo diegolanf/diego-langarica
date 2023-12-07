@@ -30,7 +30,21 @@
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
-      "rules": {}
+      "rules": {
+        "@angular-eslint/template/attributes-order": [
+          "warn",
+          {
+            "alphabetical": true
+          }
+        ],
+        "@angular-eslint/template/eqeqeq": [
+          "error",
+          {
+            "allowNullOrUndefined": true
+          }
+        ],
+        "@angular-eslint/template/prefer-self-closing-tags": ["warn"]
+      }
     }
   ]
 }

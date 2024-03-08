@@ -16,21 +16,19 @@ import { RouteItems } from './route.constants';
 @Component({
   standalone: true,
   imports: [
-    RouterModule,
-    ToolbarComponent,
-    MatSidenavModule,
-    SideNavigationComponent,
     MatButtonModule,
     MatIconModule,
+    MatSidenavModule,
     MatToolbarModule,
+    RouterModule,
+    SideNavigationComponent,
+    ToolbarComponent,
   ],
   selector: 'diego-langarica-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'client';
-
   readonly mdDown: Signal<boolean> = toSignal(
     inject(ScreenSizeService).mdDown$,
     { initialValue: false },

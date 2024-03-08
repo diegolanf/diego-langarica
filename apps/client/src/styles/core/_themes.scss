@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use '@angular/material/index' as mat;
 
 @include mat.core();
 
@@ -27,32 +27,4 @@ $light-theme: mat.define-light-theme(
 
 @media (prefers-color-scheme: light) {
   @include mat.all-component-colors($light-theme);
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-app-root {
-  @apply fixed;
-  @apply w-full;
-  @apply h-full;
-  @apply top-0;
-  @apply left-0;
-}
-
-html,
-body,
-router-outlet {
-  @apply h-full;
-}
-
-// Fix icon button not being centered
-.mdc-icon-button mat-icon {
-  @apply flex;
-}
-
-// Adjust letter spacing in button labels
-.mdc-button__label {
-  @apply tracking-normal;
 }

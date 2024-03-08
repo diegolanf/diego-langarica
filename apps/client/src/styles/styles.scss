@@ -1,0 +1,20 @@
+@use 'core/themes';
+@use 'core/material';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+app-root {
+  @apply fixed;
+  @apply w-full;
+  @apply h-full;
+  @apply top-0;
+  @apply left-0;
+}
+
+html,
+body,
+router-outlet {
+  @apply h-full;
+}

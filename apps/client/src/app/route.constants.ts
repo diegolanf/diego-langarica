@@ -6,21 +6,21 @@ export enum Route {
   runner = 'runner',
 }
 
-export const RouteItem: { [key in Route]: RouteConfig } = {
+export const RouteItem: Record<Route, RouteConfig> = {
   explore: {
     icon: 'explore',
     route: '/',
-    name: 'navigation.explore',
+    name: 'i18n.navigation.explore',
   },
   routines: {
     icon: 'format_list_bulleted',
     route: '/',
-    name: 'navigation.myRoutines',
+    name: 'i18n.navigation.myRoutines',
   },
   runner: {
     icon: 'sports',
     route: '/runner',
-    name: 'navigation.runner',
+    name: 'i18n.navigation.runner',
   },
 };
 

@@ -4,8 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { TranslocoModule } from '@ngneat/transloco';
-import packageInfo from 'package.json';
+import * as packageInfo from 'package.json';
 
 import { RouteConfig } from '../../route-config.model';
 
@@ -18,7 +17,6 @@ import { RouteConfig } from '../../route-config.model';
     MatIconModule,
     MatMenuModule,
     RouterModule,
-    TranslocoModule,
   ],
   templateUrl: './navigation-menu.component.html',
   styleUrls: ['./navigation-menu.component.scss'],

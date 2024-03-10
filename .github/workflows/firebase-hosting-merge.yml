@@ -37,8 +37,8 @@ jobs:
         with:
           project: apps/tochtli-e2e
           start: npm run ci:serve:client
-          wait-on: 'http://localhost:4200'
-          config: baseUrl=http://localhost:4200
+          wait-on: 'http://localhost:4300'
+          config: baseUrl=http://localhost:4300
   e2e-api:
     runs-on: ubuntu-latest
     needs: [ install ]

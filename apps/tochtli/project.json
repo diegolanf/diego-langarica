@@ -1,0 +1,83 @@
+{
+  "name": "tochtli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "diego-langarica",
+  "sourceRoot": "apps/tochtli/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tochtli",
+        "index": "apps/tochtli/src/index.html",
+        "browser": "apps/tochtli/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/tochtli/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/tochtli/src/favicon.ico", "apps/tochtli/src/assets"],
+        "styles": ["styles/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "tochtli:build:production"
+        },
+        "development": {
+          "buildTarget": "tochtli:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/tochtli/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "tochtli:build"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/tochtli/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "tochtli:build",
+        "staticFilePath": "dist/apps/tochtli/browser"
+      }
+    }
+  }
+}

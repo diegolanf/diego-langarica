@@ -10,34 +10,56 @@
       ]
     }
   ],
-  "hosting": {
-    "public": "dist/apps/client/browser",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "/api",
-        "function": "app"
-      },
-      {
-        "source": "/api/**",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs/**",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs-json",
-        "function": "app"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "app",
+      "public": "dist/apps/client/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/api",
+          "function": "app"
+        },
+        {
+          "source": "/api/**",
+          "function": "app"
+        },
+        {
+          "source": "/api-docs",
+          "function": "app"
+        },
+        {
+          "source": "/api-docs/**",
+          "function": "app"
+        },
+        {
+          "source": "/api-docs-json",
+          "function": "app"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "tochtli",
+      "public": "dist/apps/tochtli/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/api",
+          "function": "app"
+        },
+        {
+          "source": "/api/**",
+          "function": "app"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AbstractApiService } from '@diego-langarica/data-access';
+import { AbstractApiService } from '@dl/data-access';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

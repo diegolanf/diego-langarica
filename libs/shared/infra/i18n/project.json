@@ -2,7 +2,7 @@
   "name": "shared-infra-i18n",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/infra/i18n/src",
-  "prefix": "diego-langarica",
+  "prefix": "dl",
   "tags": [],
   "projectType": "library",
   "targets": {

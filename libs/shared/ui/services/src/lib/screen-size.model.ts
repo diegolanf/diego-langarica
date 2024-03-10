@@ -1,5 +1,5 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { isString } from '@diego-langarica/shared/utility/functions';
+import { isString } from '@dl/shared/utility/functions';
 
 export enum ScreenSize {
   XSmall = 1,

@@ -2,7 +2,7 @@
   "name": "shell-navigation",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shell/navigation/src",
-  "prefix": "diego-langarica",
+  "prefix": "dl",
   "tags": [],
   "projectType": "library",
   "targets": {

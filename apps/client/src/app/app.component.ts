@@ -5,11 +5,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { ScreenSizeService } from '@diego-langarica/shared/ui/services';
+import { ScreenSizeService } from '@dl/shared/ui/services';
 import {
   SideNavigationComponent,
   ToolbarComponent,
-} from '@diego-langarica/shell/navigation';
+} from '@dl/shell/navigation';
 import { rxEffects } from '@rx-angular/state/effects';
 
 import { ApiService } from './api.service';

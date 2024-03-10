@@ -8,7 +8,7 @@ import * as packageInfo from 'package.json';
 import { RouteConfig } from '../route-config.model';
 
 @Component({
-  selector: 'diego-langarica-side-navigation',
+  selector: 'dl-side-navigation',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatListModule, RouterModule],
   templateUrl: './side-navigation.component.html',

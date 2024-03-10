@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { removeQueryStringsFromUrl } from '@diego-langarica/shared/utility/functions';
+import { removeQueryStringsFromUrl } from '@dl/shared/utility/functions';
 import { rxState } from '@rx-angular/state';
 import { rxActions } from '@rx-angular/state/actions';
 import {

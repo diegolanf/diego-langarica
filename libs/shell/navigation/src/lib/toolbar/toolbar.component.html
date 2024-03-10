@@ -4,7 +4,7 @@
       <mat-icon>menu</mat-icon>
     </button>
   } @else {
-    <diego-langarica-navigation-menu [routeItems]="routeItems" />
+    <dl-navigation-menu [routeItems]="routeItems" />
   }
-  <span class="pl-4 font-thin">tochtli</span>
+  <span *ngIf="title" class="pl-4 font-thin">{{ title }}</span>
 </mat-toolbar>

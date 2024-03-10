@@ -2,7 +2,7 @@
   "name": "shared-ui-services",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/services/src",
-  "prefix": "diego-langarica",
+  "prefix": "dl",
   "tags": [],
   "projectType": "library",
   "targets": {

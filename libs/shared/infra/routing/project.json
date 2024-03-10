@@ -2,7 +2,7 @@
   "name": "shared-infra-routing",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/infra/routing/src",
-  "prefix": "diego-langarica",
+  "prefix": "dl",
   "tags": [],
   "projectType": "library",
   "targets": {

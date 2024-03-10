@@ -1,10 +1,8 @@
-<diego-langarica-toolbar
-  [routeItems]="navigationMenuItems"
-  [sidenav]="sidenav" />
+<dl-toolbar [routeItems]="navigationMenuItems" [sidenav]="sidenav" />
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav class="w-content-md flex-col">
-    <diego-langarica-side-navigation [routeItems]="navigationMenuItems" />
+    <dl-side-navigation [routeItems]="navigationMenuItems" />
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet />

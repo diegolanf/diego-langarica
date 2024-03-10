@@ -2,7 +2,7 @@
   "name": "data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/data-access/src",
-  "prefix": "diego-langarica",
+  "prefix": "dl",
   "tags": [],
   "projectType": "library",
   "targets": {

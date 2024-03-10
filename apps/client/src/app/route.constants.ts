@@ -1,4 +1,4 @@
-import { RouteConfig } from '@diego-langarica/shell/navigation';
+import { RouteConfig } from '@dl/shell/navigation';
 
 export enum Route {
   explore = 'explore',

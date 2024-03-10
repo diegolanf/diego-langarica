@@ -10,7 +10,7 @@ import * as packageInfo from 'package.json';
 import { RouteConfig } from '../../route-config.model';
 
 @Component({
-  selector: 'diego-langarica-navigation-menu',
+  selector: 'dl-navigation-menu',
   standalone: true,
   imports: [
     CommonModule,

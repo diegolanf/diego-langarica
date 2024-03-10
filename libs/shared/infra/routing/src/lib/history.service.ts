@@ -21,9 +21,7 @@ interface HistoryServiceActions {
   back: void;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class HistoryService {
   private readonly actions = rxActions<HistoryServiceActions>();
   private readonly state = rxState<HistoryServiceState>(({ set }) => {

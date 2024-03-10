@@ -10,6 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "paths": {
+      "@diego-langarica/data-access": ["libs/shared/data-access/src/index.ts"],
       "@diego-langarica/shared/infra/i18n": [
         "libs/shared/infra/i18n/src/index.ts"
       ],

@@ -10,7 +10,9 @@ import {
   SideNavigationComponent,
   ToolbarComponent,
 } from '@diego-langarica/shell/navigation';
+import { rxEffects } from '@rx-angular/state/effects';
 
+import { ApiService } from './api.service';
 import { RouteItems } from './route.constants';
 
 @Component({
@@ -29,10 +31,17 @@ import { RouteItems } from './route.constants';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  private readonly effects = rxEffects();
+
   readonly mdDown: Signal<boolean> = toSignal(
     inject(ScreenSizeService).mdDown$,
     { initialValue: false },
   );
 
   readonly navigationMenuItems = RouteItems;
+
+  constructor(apiService: ApiService) {
+    // eslint-disable-next-line no-console
+    this.effects.register(apiService.getWelcomeMessage(), console.log);
+  }
 }

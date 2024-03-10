@@ -27,9 +27,7 @@ export interface ScreenSizeServiceState {
   xlUp: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ScreenSizeService {
   private readonly state = rxState<ScreenSizeServiceState>(({ connect }) => {
     connect(

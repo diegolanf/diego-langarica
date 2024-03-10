@@ -10,8 +10,8 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         AppComponent,
-        RouterTestingModule,
         NoopAnimationsModule,
+        RouterTestingModule,
         TranslocoTestingModule.forRoot({}),
       ],
     }).compileComponents();

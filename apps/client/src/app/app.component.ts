@@ -1,8 +1,7 @@
-import { Component, inject, Signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { ScreenSizeService } from '@dl/shared/ui/services';
@@ -11,6 +10,7 @@ import {
   ToolbarComponent,
 } from '@dl/shell/navigation';
 import { rxEffects } from '@rx-angular/state/effects';
+import { filter, Observable } from 'rxjs';
 
 import { ApiService } from './api.service';
 import { RouteItems } from './route.constants';
@@ -31,17 +31,20 @@ import { RouteItems } from './route.constants';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  private readonly effects = rxEffects();
+  @ViewChild('sidenav') sidenav?: MatSidenav;
 
-  readonly mdDown: Signal<boolean> = toSignal(
-    inject(ScreenSizeService).mdDown$,
-    { initialValue: false },
-  );
+  private readonly effects = rxEffects();
+  private readonly mdUp$: Observable<boolean> = inject(ScreenSizeService).mdUp$;
 
   readonly navigationMenuItems = RouteItems;
 
   constructor(apiService: ApiService) {
     // eslint-disable-next-line no-console
     this.effects.register(apiService.getWelcomeMessage(), console.log);
+
+    this.effects.register(
+      this.mdUp$.pipe(filter((mdUp: boolean) => mdUp)),
+      () => this.sidenav?.close(),
+    );
   }
 }

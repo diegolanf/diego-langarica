@@ -1,7 +1,18 @@
 {
   "functions": [
     {
+      "codebase": "api",
       "source": "dist/apps/api",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    },
+    {
+      "codebase": "home",
+      "source": "dist/apps/home-api",
       "ignore": [
         "node_modules",
         ".git",

@@ -4,6 +4,32 @@
   "sourceRoot": "apps/home-api/src",
   "projectType": "application",
   "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "development",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/home-api",
+        "main": "apps/home-api/src/main.ts",
+        "tsConfig": "apps/home-api/tsconfig.app.json",
+        "assets": ["apps/home-api/src/assets"],
+        "webpackConfig": "apps/home-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "function": {
+          "main": "apps/home-api/src/function.ts"
+        },
+        "production": {
+          "main": "apps/home-api/src/function.ts",
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
@@ -14,9 +40,19 @@
         "development": {
           "buildTarget": "home-api:build:development"
         },
-        "production": {
+        "function": {
           "buildTarget": "home-api:build:production"
         }
+      }
+    },
+    "serve-as-function": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx serve home-api -c function",
+          "firebase emulators:start --only functions"
+        ],
+        "parallel": true
       }
     },
     "test": {

@@ -7,7 +7,7 @@
     "build": {
       "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "development",
+      "defaultConfiguration": "function",
       "options": {
         "target": "node",
         "compiler": "tsc",
@@ -37,25 +37,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "home-api:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "home-api:build:development"
-        },
-        "function": {
-          "buildTarget": "home-api:build:production"
-        }
+        "buildTarget": "home-api:build:development"
       }
     },
     "serve-as-function": {
       "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "options": {
-        "commands": [
-          "nx serve home-api -c function",
-          "firebase emulators:start --only functions"
-        ],
-        "parallel": true
+        "commands": ["firebase emulators:start --only functions"]
       }
     },
     "test": {

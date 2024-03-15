@@ -18,7 +18,6 @@
           "apps/home-api/src/assets",
           "apps/home-api/src/package.json"
         ],
-        "isolatedConfig": true,
         "webpackConfig": "apps/home-api/webpack.config.js"
       },
       "configurations": {

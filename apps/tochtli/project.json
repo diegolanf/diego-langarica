@@ -77,7 +77,8 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "tochtli:build",
-        "staticFilePath": "dist/apps/tochtli/browser"
+        "staticFilePath": "dist/apps/tochtli/browser",
+        "port": 4300
       }
     }
   }

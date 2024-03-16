@@ -4,19 +4,47 @@
   "sourceRoot": "apps/tochtli-api/src",
   "projectType": "application",
   "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "function",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/tochtli-api",
+        "main": "apps/tochtli-api/src/main.ts",
+        "tsConfig": "apps/tochtli-api/tsconfig.app.json",
+        "assets": [
+          "apps/tochtli-api/src/assets",
+          "apps/tochtli-api/src/package.json"
+        ],
+        "webpackConfig": "apps/tochtli-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "function": {
+          "main": "apps/tochtli-api/src/function.ts"
+        },
+        "production": {
+          "main": "apps/tochtli-api/src/function.ts",
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "tochtli-api:build"
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "tochtli-api:build:development"
-        },
-        "production": {
-          "buildTarget": "tochtli-api:build:production"
-        }
+        "buildTarget": "tochtli-api:build:development"
+      }
+    },
+    "serve-as-function": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "commands": ["firebase emulators:start --only functions"]
       }
     },
     "test": {

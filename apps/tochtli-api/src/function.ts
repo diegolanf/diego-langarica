@@ -21,4 +21,4 @@ createNestServer(server)
 setGlobalOptions({ maxInstances: 10 });
 
 // Connect express server to Firebase Functions
-export const app = onRequest(server);
+export const tochtliApp = onRequest(server);

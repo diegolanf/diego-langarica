@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "start": "nx run-many --target=serve",
+    "start": "nx run-many -t serve -p home-api home tochtli-api tochtli",
+    "start:home": "nx run-many -t serve -p home-api home",
+    "start:tochtli": "nx run-many -t serve -p tochtli tochtli-api",
     "e2e:home": "nx e2e home-e2e",
     "e2e:tochtli": "nx e2e tochtli-e2e",
     "ci:serve:home": "nx serve-static home",

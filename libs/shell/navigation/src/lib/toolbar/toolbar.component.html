@@ -1,0 +1,10 @@
+<mat-toolbar>
+  @if (mdDown()) {
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  } @else {
+    <dl-navigation-menu [routeItems]="routeItems" />
+  }
+  <span *ngIf="title" class="pl-4 font-thin">{{ title }}</span>
+</mat-toolbar>

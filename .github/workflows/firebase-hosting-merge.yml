@@ -17,18 +17,29 @@ jobs:
         with:
           node-version: 18
       - run: npm run ci:test
-  e2e-client:
+  e2e-home:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v2
       - uses: cypress-io/github-action@v6
         with:
-          project: apps/client-e2e
-          start: npm run ci:serve:client
+          project: apps/home-e2e
+          start: npm run ci:serve:home
           wait-on: 'http://localhost:4200'
           config: baseUrl=http://localhost:4200
-  e2e-api:
+  e2e-tochtli:
+    runs-on: ubuntu-latest
+    needs: [ install ]
+    steps:
+      - uses: diegolanf/cache-npm@v2
+      - uses: cypress-io/github-action@v6
+        with:
+          project: apps/tochtli-e2e
+          start: npm run ci:serve:tochtli
+          wait-on: 'http://localhost:4300'
+          config: baseUrl=http://localhost:4300
+  e2e-home-api:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
@@ -36,10 +47,19 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm run ci:e2e:api
+      - run: npm run ci:e2e:home-api
+  e2e-tochtli-api:
+    runs-on: ubuntu-latest
+    needs: [ install ]
+    steps:
+      - uses: diegolanf/cache-npm@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm run ci:e2e:tochtli-api
   build-and-deploy:
     runs-on: ubuntu-latest
-    needs: [ tests, e2e-client, e2e-api ]
+    needs: [ tests, e2e-home, e2e-tochtli, e2e-home-api, e2e-tochtli-api ]
     steps:
       - uses: diegolanf/cache-npm@v2
       - uses: actions/setup-node@v4

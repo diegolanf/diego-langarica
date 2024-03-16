@@ -31,6 +31,11 @@
           "codeCoverage": true
         }
       }
+    },
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "namedInputs": {
@@ -49,21 +54,36 @@
   },
   "generators": {
     "@nx/angular:application": {
-      "addTailwind": true,
       "e2eTestRunner": "cypress",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "addTailwind": true
     },
     "@nx/angular:library": {
-      "changeDetection": "OnPush",
       "linter": "eslint",
-      "style": "scss",
-      "unitTestRunner": "jest"
-    },
-    "@nx/angular:component": {
+      "unitTestRunner": "jest",
       "changeDetection": "OnPush",
       "style": "scss"
+    },
+    "@nx/angular:component": {
+      "style": "scss",
+      "changeDetection": "OnPush"
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    },
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "componentTestingTargetName": "component-test"
+      }
+    }
+  ]
 }

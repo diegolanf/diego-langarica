@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "diego-langarica"
-  }
+  },
+  "targets": {
+    "diego-langarica": {
+      "hosting": {
+        "tochtli": [
+          "tochtli"
+        ],
+        "app": [
+          "diego-langarica"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

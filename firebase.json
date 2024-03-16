@@ -1,7 +1,18 @@
 {
   "functions": [
     {
-      "source": "dist/apps/api",
+      "codebase": "home",
+      "source": "dist/apps/home-api",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    },
+    {
+      "codebase": "tochtli",
+      "source": "dist/apps/tochtli-api",
       "ignore": [
         "node_modules",
         ".git",
@@ -10,34 +21,68 @@
       ]
     }
   ],
-  "hosting": {
-    "public": "dist/apps/client/browser",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "/api",
-        "function": "app"
-      },
-      {
-        "source": "/api/**",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs/**",
-        "function": "app"
-      },
-      {
-        "source": "/api-docs-json",
-        "function": "app"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "hosting": [
+    {
+      "target": "app",
+      "public": "dist/apps/home/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/api",
+          "function": "homeApp"
+        },
+        {
+          "source": "/api/**",
+          "function": "homeApp"
+        },
+        {
+          "source": "/api-docs",
+          "function": "homeApp"
+        },
+        {
+          "source": "/api-docs/**",
+          "function": "homeApp"
+        },
+        {
+          "source": "/api-docs-json",
+          "function": "homeApp"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "tochtli",
+      "public": "dist/apps/tochtli/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/api",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "/api/**",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "/api-docs",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "/api-docs/**",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "/api-docs-json",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
 }

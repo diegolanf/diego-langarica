@@ -1,0 +1,9 @@
+// Fix icon button not being centered
+.mdc-icon-button mat-icon {
+  @apply flex;
+}
+
+// Adjust letter spacing in button labels
+.mdc-button__label {
+  @apply tracking-normal;
+}

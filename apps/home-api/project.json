@@ -1,0 +1,59 @@
+{
+  "name": "home-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/home-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "function",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/home-api",
+        "main": "apps/home-api/src/main.ts",
+        "tsConfig": "apps/home-api/tsconfig.app.json",
+        "assets": [
+          "apps/home-api/src/assets",
+          "apps/home-api/src/package.json"
+        ],
+        "webpackConfig": "apps/home-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "function": {
+          "main": "apps/home-api/src/function.ts"
+        },
+        "production": {
+          "main": "apps/home-api/src/function.ts",
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "home-api:build:development"
+      }
+    },
+    "serve-as-function": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "commands": ["firebase emulators:start --only functions"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/home-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

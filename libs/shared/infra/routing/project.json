@@ -1,0 +1,27 @@
+{
+  "name": "shared-infra-routing",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/infra/routing/src",
+  "prefix": "dl",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/infra/routing/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/infra/routing/**/*.ts",
+          "libs/shared/infra/routing/**/*.html"
+        ]
+      }
+    }
+  }
+}

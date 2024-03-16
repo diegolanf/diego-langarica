@@ -44,7 +44,7 @@ jobs:
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm run ci:e2e:home-api
@@ -53,13 +53,23 @@ jobs:
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm run ci:e2e:tochtli-api
-  build-and-deploy:
+  delete-functions:
     runs-on: ubuntu-latest
     needs: [ tests, e2e-home, e2e-tochtli, e2e-home-api, e2e-tochtli-api ]
+    continue-on-error: true
+    steps:
+      - uses: w9jds/firebase-action@master
+        with:
+          args: functions:delete home tochtli --force
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    needs: [ delete-functions ]
     steps:
       - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v4

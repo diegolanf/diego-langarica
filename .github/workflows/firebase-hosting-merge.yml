@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: w9jds/firebase-action@master
         with:
-          args: functions:delete home tochtli --project=diego-langarica --force
+          args: functions:delete homeApp tochtliApp --project=diego-langarica --force
         env:
           GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
   build-and-deploy:

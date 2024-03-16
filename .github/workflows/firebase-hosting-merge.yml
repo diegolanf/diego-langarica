@@ -44,7 +44,7 @@ jobs:
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm run ci:e2e:home-api
@@ -53,7 +53,7 @@ jobs:
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm run ci:e2e:tochtli-api

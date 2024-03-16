@@ -1,5 +1,4 @@
 {
-  "i18n.navigation.explore": "Explore",
-  "i18n.navigation.myRoutines": "My Routines",
-  "i18n.navigation.runner": "Runner"
+	"i18n.navigation.about": "About Me",
+	"i18n.navigation.projects": "Projects"
 }

@@ -1,26 +1,20 @@
 import { RouteConfig } from '@dl/shell/navigation';
 
 export enum Route {
-  explore = 'explore',
-  routines = 'routines',
-  runner = 'runner',
+  about = 'about',
+  projects = 'projects',
 }
 
 export const RouteItem: Record<Route, RouteConfig> = {
-  explore: {
-    icon: 'explore',
+  about: {
+    icon: 'person',
     route: '/',
-    name: 'i18n.navigation.explore',
+    name: 'i18n.navigation.about',
   },
-  routines: {
-    icon: 'format_list_bulleted',
-    route: '/',
-    name: 'i18n.navigation.myRoutines',
-  },
-  runner: {
-    icon: 'sports',
-    route: '/runner',
-    name: 'i18n.navigation.runner',
+  projects: {
+    icon: 'code',
+    route: '/projects',
+    name: 'i18n.navigation.projects',
   },
 };
 

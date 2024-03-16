@@ -36,7 +36,7 @@ jobs:
       - uses: cypress-io/github-action@v6
         with:
           project: apps/tochtli-e2e
-          start: npm run ci:serve:client
+          start: npm run ci:serve:tochtli
           wait-on: 'http://localhost:4300'
           config: baseUrl=http://localhost:4300
   e2e-home-api:

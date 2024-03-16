@@ -2,17 +2,30 @@
   "functions": [
     {
       "codebase": "home",
-      "source": "dist/apps/home-api"
+      "source": "dist/apps/home-api",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
     },
     {
       "codebase": "tochtli",
-      "source": "dist/apps/tochtli-api"
+      "source": "dist/apps/tochtli-api",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
     }
   ],
   "hosting": [
     {
       "target": "app",
       "public": "dist/apps/home/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "/api",
@@ -43,6 +56,7 @@
     {
       "target": "tochtli",
       "public": "dist/apps/tochtli/browser",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "/api",

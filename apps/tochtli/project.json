@@ -18,7 +18,12 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/tochtli/src/favicon.ico", "apps/tochtli/src/assets"],
         "styles": ["styles/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "server": "apps/tochtli/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/tochtli/server.ts"
+        }
       },
       "configurations": {
         "production": {
@@ -65,6 +70,9 @@
       "options": {
         "buildTarget": "tochtli:build"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

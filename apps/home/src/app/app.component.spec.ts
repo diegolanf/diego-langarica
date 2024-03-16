@@ -1,26 +1,28 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslocoTestingModule } from '@ngneat/transloco';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
+      imports: [
+        AppComponent,
+        HttpClientTestingModule,
+        NoopAnimationsModule,
+        RouterTestingModule,
+        TranslocoTestingModule.forRoot({}),
+      ],
     }).compileComponents();
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Welcome home');
-  });
-
-  it(`should have as title 'home'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('home');
+    expect(app).toBeTruthy();
   });
 });

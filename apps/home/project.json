@@ -17,7 +17,7 @@
         "tsConfig": "apps/home/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
-        "styles": ["apps/home/src/styles.scss"],
+        "styles": ["styles/styles.scss"],
         "scripts": [],
         "server": "apps/home/src/main.server.ts",
         "prerender": true,

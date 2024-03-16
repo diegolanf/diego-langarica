@@ -3,7 +3,7 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shell/navigation/src",
   "prefix": "dl",
-  "tags": [],
+  "tags": ["layer:frontend", "scope:shell", "type:ui"],
   "projectType": "library",
   "targets": {
     "test": {

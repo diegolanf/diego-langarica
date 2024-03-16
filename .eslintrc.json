@@ -13,6 +13,20 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "layer:frontend",
+                "bannedExternalImports": ["@nestjs/*"],
+                "notDependOnLibsWithTags": ["layer:backend"]
+              },
+              {
+                "sourceTag": "layer:backend",
+                "bannedExternalImports": ["@angular/*"],
+                "notDependOnLibsWithTags": ["layer:frontend"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "notDependOnLibsWithTags": ["scope:shell"]
+              },
+              {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
               }

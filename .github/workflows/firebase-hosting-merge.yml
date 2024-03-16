@@ -7,21 +7,21 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
-      - uses: diegolanf/cache-npm@v2
+      - uses: diegolanf/cache-npm@v3
   tests:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
-      - uses: diegolanf/cache-npm@v2
+      - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - run: npm run ci:test
   e2e-home:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
-      - uses: diegolanf/cache-npm@v2
+      - uses: diegolanf/cache-npm@v3
       - uses: cypress-io/github-action@v6
         with:
           project: apps/home-e2e
@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
-      - uses: diegolanf/cache-npm@v2
+      - uses: diegolanf/cache-npm@v3
       - uses: cypress-io/github-action@v6
         with:
           project: apps/tochtli-e2e
@@ -43,28 +43,28 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
-      - uses: diegolanf/cache-npm@v1
+      - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
       - run: npm run ci:e2e:home-api
   e2e-tochtli-api:
     runs-on: ubuntu-latest
     needs: [ install ]
     steps:
-      - uses: diegolanf/cache-npm@v1
+      - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
       - run: npm run ci:e2e:tochtli-api
   build-and-deploy:
     runs-on: ubuntu-latest
     needs: [ tests, e2e-home, e2e-tochtli, e2e-home-api, e2e-tochtli-api ]
     steps:
-      - uses: diegolanf/cache-npm@v2
+      - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
       - run: npm run ci:build
       - uses: w9jds/firebase-action@master
         with:

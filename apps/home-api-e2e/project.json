@@ -12,5 +12,6 @@
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "tags": ["layer:backend", "type:e2e"]
 }

@@ -4,6 +4,6 @@
   "projectType": "application",
   "sourceRoot": "apps/tochtli-e2e/src",
   "targets": {},
-  "tags": [],
+  "tags": ["layer:frontend", "type:e2e"],
   "implicitDependencies": ["tochtli"]
 }

@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "implicitDependencies": ["tochtli-api"],
   "projectType": "application",
+  "tags": ["layer:backend", "type:e2e"],
   "targets": {
     "e2e": {
       "executor": "@nx/jest:jest",

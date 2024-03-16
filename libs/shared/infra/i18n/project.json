@@ -3,7 +3,7 @@
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/infra/i18n/src",
   "prefix": "dl",
-  "tags": [],
+  "tags": ["scope:shared", "type:infra"],
   "projectType": "library",
   "targets": {
     "test": {

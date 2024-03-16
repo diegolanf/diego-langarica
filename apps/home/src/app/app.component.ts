@@ -19,10 +19,10 @@ import { RouteItems } from './route.constants';
 @Component({
   standalone: true,
   imports: [
-    RouterModule,
     MatSidenav,
     MatSidenavContainer,
     MatSidenavContent,
+    RouterModule,
     SideNavigationComponent,
     ToolbarComponent,
   ],

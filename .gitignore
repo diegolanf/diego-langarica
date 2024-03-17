@@ -44,3 +44,7 @@ Thumbs.db
 # Firebase
 .firebase
 *.log
+
+# Env files
+**/.env
+

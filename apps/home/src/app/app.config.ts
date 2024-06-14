@@ -4,7 +4,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { TranslocoHttpLoader } from '@dl/shared/infra/i18n';
-import { provideTransloco } from '@ngneat/transloco';
+import { provideTransloco } from '@jsverse/transloco';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 

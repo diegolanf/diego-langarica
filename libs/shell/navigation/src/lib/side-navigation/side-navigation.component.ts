@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 import * as packageInfo from 'package.json';
 
 import { RouteConfig } from '../route-config.model';
@@ -10,7 +11,13 @@ import { RouteConfig } from '../route-config.model';
 @Component({
   selector: 'dl-side-navigation',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatListModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatListModule,
+    RouterModule,
+    TranslocoDirective,
+  ],
   templateUrl: './side-navigation.component.html',
   styleUrls: ['./side-navigation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

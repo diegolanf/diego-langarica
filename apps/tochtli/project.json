@@ -16,14 +16,14 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/tochtli/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/tochtli/src/favicon.ico", "apps/tochtli/src/assets"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/tochtli/public"
+          }
+        ],
         "styles": ["styles/styles.scss"],
-        "scripts": [],
-        "server": "apps/tochtli/src/main.server.ts",
-        "prerender": true,
-        "ssr": {
-          "entry": "apps/tochtli/server.ts"
-        }
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -85,8 +85,9 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "tochtli:build",
+        "port": 4300,
         "staticFilePath": "dist/apps/tochtli/browser",
-        "port": 4300
+        "spa": true
       }
     }
   }

@@ -39,8 +39,14 @@ testem.log
 Thumbs.db
 
 .nx/cache
+.nx/workspace-data
+
 .angular
 
 # Firebase
 .firebase
 *.log
+
+# Env files
+**/.env
+

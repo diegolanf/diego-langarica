@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { AppComponent } from './app.component';
 

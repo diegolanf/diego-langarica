@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { SideNavigationComponent } from './side-navigation.component';
 
@@ -8,7 +9,7 @@ describe('SideNavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideNavigationComponent],
+      imports: [SideNavigationComponent, TranslocoTestingModule.forRoot({})],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideNavigationComponent);

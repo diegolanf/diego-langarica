@@ -28,7 +28,15 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
+          "source": "/api",
+          "function": "homeApp"
+        },
+        {
           "source": "/api/**",
+          "function": "homeApp"
+        },
+        {
+          "source": "/api-docs",
           "function": "homeApp"
         },
         {
@@ -51,7 +59,15 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
+          "source": "/api",
+          "function": "tochtliApp"
+        },
+        {
           "source": "/api/**",
+          "function": "tochtliApp"
+        },
+        {
+          "source": "/api-docs",
           "function": "tochtliApp"
         },
         {

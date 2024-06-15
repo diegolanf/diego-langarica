@@ -41,12 +41,19 @@ jobs:
           config: baseUrl=http://localhost:4300
   e2e-home-api:
     runs-on: ubuntu-latest
+    environment: home-test
     needs: [ install ]
     steps:
       - uses: diegolanf/cache-npm@v3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+        env:
+          PORT: ${{env.PORT}}
+          PG_HOST: ${{secrets.PG_HOST}}
+          PG_DATABASE: ${{env.PG_DATABASE}}
+          PG_USER: ${{secrets.PG_USER}}
+          PG_PASSWORD: ${{secrets.PG_PASSWORD}}
       - run: npm run ci:e2e:home-api
   e2e-tochtli-api:
     runs-on: ubuntu-latest

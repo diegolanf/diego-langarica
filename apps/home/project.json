@@ -16,14 +16,14 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/home/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/home/public"
+          }
+        ],
         "styles": ["styles/styles.scss"],
-        "scripts": [],
-        "server": "apps/home/src/main.server.ts",
-        "prerender": true,
-        "ssr": {
-          "entry": "apps/home/server.ts"
-        }
+        "scripts": []
       },
       "configurations": {
         "production": {
@@ -51,10 +51,6 @@
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
-      "options": {
-        "port": 4200,
-        "proxyConfig": "apps/home/proxy.conf.json"
-      },
       "configurations": {
         "production": {
           "buildTarget": "home:build:production"
@@ -63,7 +59,11 @@
           "buildTarget": "home:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "proxyConfig": "apps/home/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -86,7 +86,8 @@
       "options": {
         "buildTarget": "home:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/home/browser"
+        "staticFilePath": "dist/apps/home/browser",
+        "spa": true
       }
     }
   }
